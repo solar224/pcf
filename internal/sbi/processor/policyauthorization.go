@@ -1177,7 +1177,8 @@ func (p *Processor) handleBDTPolicyInd(pcfSelf *pcf_context.PCFContext,
 
 	bdtData := resp.BdtData
 	if bdtData.TransPolicy == nil || bdtData.TransPolicy.RecTimeInt == nil {
-		p := util.GetProblemDetail(fmt.Sprintf("UDR BdtData has nil TransPolicy/RecTimeInt for bdtRefId=%s", req.BdtRefId), util.ERROR_REQUEST_PARAMETERS)
+		errMsg := fmt.Sprintf("UDR BdtData has nil TransPolicy/RecTimeInt for bdtRefId=%s", req.BdtRefId)
+		p := util.GetProblemDetail(errMsg, util.ERROR_REQUEST_PARAMETERS)
 		return &p
 	}
 
